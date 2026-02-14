@@ -4,7 +4,7 @@ const noteSchema = new mongoose.Schema({
   title: { type: String, required: true },
   content: { type: String, required: true },
   date: { type: Date, default: Date.now },
-  status: { type: String, enum: ["remaining", "inprogress", "completed"], default: "remaining" }
+  status: { type: String, enum: ["Remaining",  "completed"], default: "Remaining" }
 });
 
 const Note = mongoose.model("Note", noteSchema);

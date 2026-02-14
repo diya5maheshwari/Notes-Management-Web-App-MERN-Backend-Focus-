@@ -381,13 +381,13 @@
                                 </button>
                             </form>
 
-                            <form action="/status/<%= note._id %>" method="post">
+                            <!-- <form action="/status/<%= note._id %>" method="post">
                                 <input type="hidden" name="status" value="inprogress">
                                 <button
                                     class="status-btn status-inprogress <%= note.status === 'inprogress' ? 'active' : '' %>">
                                     In Progress
                                 </button>
-                            </form>
+                            </form> -->
 
                             <form action="/status/<%= note._id %>" method="post">
                                 <input type="hidden" name="status" value="completed">

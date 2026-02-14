@@ -1,17 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
 import Note from "./models/Note.js";
-import dotenv from "dotenv";
-
-
-dotenv.config();
-
 
 const app = express();
 
 app.set("view engine", "ejs");
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect("mongodb://127.0.0.1:27017/NoteDB")
 .then(()=>{
     console.log("Connected to MongoDB");
 })
@@ -85,8 +80,5 @@ app.post("/edit/:id", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 5100, () => {
-  console.log("Server running");
-});
-
+app.listen(5100);
 

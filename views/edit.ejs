@@ -1,0 +1,248 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/edit/<%= index %>" method="post">
+             <input type="text" name="title" value="<%= note.title %>">
+            <input type="text" name="content" value="<%= note.content %>">
+            <button>Update</button>
+    </form>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Note</title>
+
+    <style>
+        body {
+            background: #f2f4f7;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .edit-box {
+            background: white;
+            padding: 30px;
+            width: 450px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 18px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            background: #f1f3f6;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1a73e8;
+            color: white;
+            font-size: 17px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0d58c9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="edit-box">
+        <h1>Edit Note</h1>
+
+        <form action="/edit/<%= index %>" method="post">
+            <input type="text" name="title" value="<%= note.title %>" required>
+            <textarea name="content" rows="5" required><%= note.content %></textarea>
+            <button>Update</button>
+        </form>
+    </div>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Note - Professional Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables for Consistency */
+        :root {
+            --color-primary: #1a73e8; 
+            --color-primary-dark: #0d5fcc;
+            --color-background: #eef1f5;
+            --color-surface: #ffffff;
+            --color-text-dark: #202124;
+            --color-text-subtle: #5f6368;
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.15); /* Deeper shadow for modal */
+            --transition-speed: 0.3s;
+            --border-radius: 12px;
+        }
+
+        /* General & Layout */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--color-background);
+            padding: 0;
+            margin: 0;
+            color: var(--color-text-dark);
+            /* Centering the modal perfectly */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        button {
+            transition: all var(--transition-speed) ease-in-out;
+        }
+
+        /* Edit Modal Box */
+        .edit-box {
+            background: var(--color-surface);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px; /* Constrained width for focus */
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            border-top: 5px solid var(--color-primary); /* Accent border */
+        }
+
+        /* Heading */
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 30px;
+        }
+
+        /* Form Inputs */
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 18px;
+            background: #f8f9fb;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            font-size: 16px;
+            color: var(--color-text-dark);
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2); 
+            background: var(--color-surface);
+        }
+        
+        /* Textarea specific styling */
+        textarea {
+            min-height: 150px;
+            line-height: 1.6;
+        }
+
+        /* Update Button */
+        .update-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--color-primary);
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.5px;
+        }
+
+        .update-btn:hover {
+            background: var(--color-primary-dark);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .update-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Back Link (Added for Usability) */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--color-text-subtle);
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .back-link:hover {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="edit-box">
+        <h1>✏️ Edit Note Record</h1>
+
+        <form action="/edit/<%= index %>" method="post">
+            <input 
+                type="text" 
+                name="title" 
+                value="<%= note.title %>" 
+                placeholder="Edit Title..." 
+                required
+            >
+            <textarea 
+                name="content" 
+                rows="8" 
+                placeholder="Edit content..." 
+                required
+            ><%= note.content %></textarea>
+            
+            <button class="update-btn">Update Note</button>
+        </form>
+        
+        <a href="/" class="back-link">← Cancel and Go Back to Notes</a>
+    </div>
+
+</body>
+</html>

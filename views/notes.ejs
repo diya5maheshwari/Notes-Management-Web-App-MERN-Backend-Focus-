@@ -43,18 +43,23 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Notes Manager</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
 
     <style>
         /* CSS Variables for Professional Consistency */
         :root {
-            --color-primary: #1a73e8; /* Blue */
+            --color-primary: #1a73e8;
+            /* Blue */
             --color-primary-dark: #0d5fcc;
-            --color-background: #eef1f5; /* Very light, cool grey */
+            --color-background: #eef1f5;
+            /* Very light, cool grey */
             --color-surface: #ffffff;
             --color-text-dark: #202124;
             --color-text-subtle: #5f6368;
@@ -73,9 +78,10 @@
             margin: 0;
             color: var(--color-text-dark);
         }
-        
+
         /* Utility for smooth transitions on all interactive elements */
-        button, .note-card {
+        button,
+        .note-card {
             transition: all var(--transition-speed) ease-in-out;
         }
 
@@ -89,19 +95,23 @@
             font-size: 36px;
             font-weight: 700;
             letter-spacing: 0.5px;
-            box-shadow: var(--shadow-light); /* Cleanest header shadow */
+            box-shadow: var(--shadow-light);
+            /* Cleanest header shadow */
         }
 
         /* Add Note Container (Form) */
         .add-container {
             width: 90%;
             max-width: 700px;
-            margin: 50px auto; /* Increased vertical margin */
+            margin: 50px auto;
+            /* Increased vertical margin */
             background: var(--color-surface);
             padding: 35px;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow-medium); /* Prominent, clean shadow */
-            border: 1px solid #dadce0; /* Subtle outline for professionalism */
+            box-shadow: var(--shadow-medium);
+            /* Prominent, clean shadow */
+            border: 1px solid #dadce0;
+            /* Subtle outline for professionalism */
         }
 
         .add-container input,
@@ -122,7 +132,8 @@
         .add-container textarea:focus {
             outline: none;
             border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2); /* Cleaner focus ring */
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+            /* Cleaner focus ring */
             background: var(--color-surface);
         }
 
@@ -131,7 +142,8 @@
             padding: 12px 30px;
             background: var(--color-primary);
             color: white;
-            border-radius: var(--border-radius); /* Square button corners for formal look */
+            border-radius: var(--border-radius);
+            /* Square button corners for formal look */
             border: none;
             cursor: pointer;
             font-size: 17px;
@@ -143,9 +155,10 @@
         .btn-main:hover {
             background: var(--color-primary-dark);
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-            transform: translateY(-2px); /* Slight lift */
+            transform: translateY(-2px);
+            /* Slight lift */
         }
-        
+
         .btn-main:active {
             transform: translateY(0);
         }
@@ -166,17 +179,20 @@
             padding: 25px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-light);
-            border: 1px solid transparent; /* Prepare for hover border */
-            min-height: 150px; /* Ensures card stability */
+            border: 1px solid transparent;
+            /* Prepare for hover border */
+            min-height: 150px;
+            /* Ensures card stability */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .note-card:hover {
-            transform: translateY(-4px); 
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); 
-            border-color: var(--color-primary); /* Subtle blue border on hover */
+            transform: translateY(-4px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-primary);
+            /* Subtle blue border on hover */
         }
 
         .note-card h2 {
@@ -186,13 +202,14 @@
             margin: 0 0 10px 0;
             color: var(--color-text-dark);
         }
-        
+
         /* Metadata (Date/Time) */
         .note-metadata {
             font-size: 13px;
             color: #9aa0a6;
             margin-bottom: 15px;
-            border-bottom: 1px dashed #e8eaed; /* Cleaner separation */
+            border-bottom: 1px dashed #e8eaed;
+            /* Cleaner separation */
             padding-bottom: 8px;
         }
 
@@ -201,7 +218,8 @@
             line-height: 1.6;
             color: var(--color-text-subtle);
             margin-top: 8px;
-            flex-grow: 1; /* Allows content to push footer down */
+            flex-grow: 1;
+            /* Allows content to push footer down */
         }
 
         /* Button Wrapper */
@@ -216,13 +234,15 @@
         .action-btn {
             padding: 8px 16px;
             border: none;
-            border-radius: 4px; /* Slightly squarer for formality */
+            border-radius: 4px;
+            /* Slightly squarer for formality */
             cursor: pointer;
             font-size: 14px;
             font-weight: 500;
             color: white;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
+
         .action-btn:hover {
             transform: scale(1.02);
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
@@ -231,6 +251,7 @@
         .edit-btn {
             background: var(--color-primary);
         }
+
         .edit-btn:hover {
             background: var(--color-primary-dark);
         }
@@ -238,22 +259,23 @@
         .delete-btn {
             background: var(--color-danger);
         }
+
         .delete-btn:hover {
             background: #c32d20;
         }
 
         /* No Notes Message */
         .no-notes-message {
-             text-align: center; 
-             color: var(--color-text-subtle); 
-             font-size: 17px; 
-             padding: 30px;
-             background: var(--color-surface);
-             width: 80%;
-             max-width: 500px;
-             margin: 40px auto;
-             border-radius: var(--border-radius);
-             box-shadow: var(--shadow-light);
+            text-align: center;
+            color: var(--color-text-subtle);
+            font-size: 17px;
+            padding: 30px;
+            background: var(--color-surface);
+            width: 80%;
+            max-width: 500px;
+            margin: 40px auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
         }
 
         /* Footer */
@@ -267,6 +289,33 @@
             background: var(--color-surface);
         }
 
+        .status-wrap {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .status-btn {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.2s ease;
+        }
+
+        .status-btn.active {
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        .note-card.completed {
+    opacity: 0.75;
+}
+
     </style>
 </head>
 
@@ -277,43 +326,99 @@
     <div class="add-container">
         <form action="/" method="post">
             <input type="text" name="title" placeholder="Enter a concise, professional title..." required>
-            <textarea name="content" rows="6" placeholder="Document your key points, action items, or meeting notes here..." required></textarea>
+            <textarea name="content" rows="6"
+                placeholder="Document your key points, action items, or meeting notes here..." required></textarea>
             <button class="btn-main">➕ Add New Note</button>
         </form>
     </div>
 
-    <% if (notes.length === 0) { %>
-        <p class="no-notes-message">Your professional workspace is currently empty. Start by adding a crucial note above!</p>
-    <% } %>
+    <% if (notes.length===0) { %>
+        <p class="no-notes-message">Your professional workspace is currently empty. Start by adding a crucial note
+            above!</p>
+        <% } %>
 
-    <div class="notes-grid">
-        <% notes.forEach(function(note, index){ %>
-            <div class="note-card">
-                <div>
-                    <h2><%= note.title %></h2>
-                    <div class="note-metadata">
-                        <span>Note ID: <%= note._id %></span>
+            <div class="notes-grid">
+                <% notes.forEach(function(note, index){ %>
+                    <div class="note-card <%= note.status === 'completed' ? 'completed' : '' %>">
+
+                        <div>
+                            <!-- <h2>
+                                <%= note.title %>
+                            </h2>
+                            <div class="note-metadata">
+                                <span>Note ID: <%= note._id %></span>
+
+                            </div> -->
+                            <div class="note-metadata">
+                                <span>Note ID: <%= note._id %></span>
+                                <br />
+                                <span class="status-btn status-<%= note.status %>">
+                                    <%= note.status.toUpperCase() %>
+                                </span>
+                            </div>
+
+                            <p>
+                                <%= note.content %>
+                            </p>
+                        </div>
+
+                        <!-- <div class="btn-wrap">
+                            <form action="/edit/<%= note._id %>" method="get">
+                                <button class="action-btn edit-btn"> Edit</button>
+                            </form>
+
+                            <form action="/delete/<%= note._id %>" method="post">
+                                <button class="action-btn delete-btn"> Delete</button>
+                            </form>
+                        </div> -->
+
+                        <div class="status-wrap">
+                            <form action="/status/<%= note._id %>" method="post">
+                                <input type="hidden" name="status" value="remaining">
+                                <button
+                                    class="status-btn status-remaining <%= note.status === 'remaining' ? 'active' : '' %>">
+                                    Remaining
+                                </button>
+                            </form>
+
+                            <form action="/status/<%= note._id %>" method="post">
+                                <input type="hidden" name="status" value="inprogress">
+                                <button
+                                    class="status-btn status-inprogress <%= note.status === 'inprogress' ? 'active' : '' %>">
+                                    In Progress
+                                </button>
+                            </form>
+
+                            <form action="/status/<%= note._id %>" method="post">
+                                <input type="hidden" name="status" value="completed">
+                                <button
+                                    class="status-btn status-completed <%= note.status === 'completed' ? 'active' : '' %>">
+                                    Completed
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="btn-wrap">
+                            <form action="/edit/<%= note._id %>" method="get">
+                                <button class="action-btn edit-btn">Edit</button>
+                            </form>
+
+                            <form action="/delete/<%= note._id %>" method="post">
+                                <button class="action-btn delete-btn">Delete</button>
+                            </form>
+                        </div>
+
+
+
 
                     </div>
-                    <p><%= note.content %></p>
-                </div>
-
-                <div class="btn-wrap">
-                    <form action="/edit/<%= note._id %>" method="get">
-                        <button class="action-btn edit-btn"> Edit</button>
-                    </form>
-
-                    <form action="/delete/<%= note._id %>" method="post">
-                        <button class="action-btn delete-btn"> Delete</button>
-                    </form>
-                </div>
+                    <% }) %>
             </div>
-        <% }) %>
-    </div>
-    
-    <div class="footer">
-        © 2025 Professional Notes Manager. All Rights Reserved.
-    </div>
+
+            <div class="footer">
+                © 2025 Professional Notes Manager. All Rights Reserved.
+            </div>
 
 </body>
+
 </html>

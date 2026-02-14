@@ -6,13 +6,25 @@ const app = express();
 
 app.set("view engine", "ejs");
 
-mongoose.connect("mongodb://127.0.0.1:27017/NoteDB")
-.then(()=>{
-    console.log("Connected to MongoDB");
+// mongoose.connect("mongodb://127.0.0.1:27017/NoteDB")
+// .then(()=>{
+//     console.log("Connected to MongoDB");
+// })
+// .catch((err) => {
+//     console.log("Error connecting to MongoDB:", err);
+// });
+
+mongoose.set("bufferCommands", false);
+
+mongoose.connect(process.env.MONGO_URI, {
+  serverSelectionTimeoutMS: 5000
 })
-.catch((err) => {
-    console.log("Error connecting to MongoDB:", err);
+.then(() => console.log("MongoDB Connected"))
+.catch(err => {
+  console.error("Mongo connection failed:", err.message);
+  process.exit(1);
 });
+
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -80,5 +92,10 @@ app.post("/edit/:id", async (req, res) => {
   }
 });
 
-app.listen(5100);
+const PORT = process.env.PORT;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log("Server running on port", PORT);
+});
+
 

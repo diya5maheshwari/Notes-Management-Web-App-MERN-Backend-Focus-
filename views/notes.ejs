@@ -342,20 +342,22 @@
                     <div class="note-card <%= note.status === 'completed' ? 'completed' : '' %>">
 
                         <div>
-                            <!-- <h2>
+                            <h2>
                                 <%= note.title %>
                             </h2>
                             <div class="note-metadata">
-                                <span>Note ID: <%= note._id %></span>
+                               <span class="status-btn status-<%= note.status %>">
+                                    <%= note.status.toUpperCase() %>
+                                </span>
 
-                            </div> -->
-                            <div class="note-metadata">
+                            </div>
+                            <!-- <div class="note-metadata">
                                 <span>Task</span>
                                 <br />
                                 <span class="status-btn status-<%= note.status %>">
                                     <%= note.status.toUpperCase() %>
                                 </span>
-                            </div>
+                            </div> -->
 
                             <p>
                                 <%= note.content %>

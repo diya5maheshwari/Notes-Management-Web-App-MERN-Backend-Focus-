@@ -25,12 +25,12 @@
         <h2> <%= note.title %></h2>
         <p> <%=note.content %></p>
 
-        <form action="/edit/<%= index %>" method="get">
+        <form action="/edit/<%= note._id %>" method="get">
             <button>Edit</button>
         </form>
 
         
-        <form action="/delete/<%= index %>" method="post" >
+        <form action="/delete/<%= note._id %>" method="post" >
             <button>Delete</button>
         </form>
     </div>
@@ -338,7 +338,7 @@
         <% } %>
 
             <div class="notes-grid">
-                <% notes.forEach(function(note, index){ %>
+                <% notes.forEach(function(note){ %>
                     <div class="note-card <%= note.status === 'completed' ? 'completed' : '' %>">
 
                         <div>
@@ -383,14 +383,6 @@
                                 </button>
                             </form>
 
-                            <!-- <form action="/status/<%= note._id %>" method="post">
-                                <input type="hidden" name="status" value="inprogress">
-                                <button
-                                    class="status-btn status-inprogress <%= note.status === 'inprogress' ? 'active' : '' %>">
-                                    In Progress
-                                </button>
-                            </form> -->
-
                             <form action="/status/<%= note._id %>" method="post">
                                 <input type="hidden" name="status" value="completed">
                                 <button
@@ -401,8 +393,8 @@
                         </div>
 
                         <div class="btn-wrap">
-                            <form action="/edit/<%= note._id %>" method="get">
-                                <button class="action-btn edit-btn">Edit</button>
+                             <form action="/edit/<%= note._id %>" method="get">
+                                <button class="action-btn edit-btn"> Edit</button>
                             </form>
 
                             <form action="/delete/<%= note._id %>" method="post">
